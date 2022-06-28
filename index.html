@@ -9,16 +9,21 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        #spinner {
+            display: none;
+        }
+    </style>
 </head>
 
 <body class="m-1 p-2 bg-secondary">
     <header>
-        <h1 class="text-center text-warning">Choose one</h1>
+        <h1 class="text-center text-info">Choose one</h1>
         <!-- Phone search area -->
         <div class="input-group mb-3 w-50 mx-auto">
             <input type="text" id="search-field" class="form-control" placeholder="IPhone, Samsung,...."
                 aria-label="Recipient's username" aria-describedby="button-addon2" />
-            <button onclick="searchPhone()" class="btn btn-outline-warning" type="button" id="button-search">
+            <button onclick="searchPhone()" class="btn btn-outline-info" type="button" id="button-search">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
                     viewBox="0 0 16 16">
                     <path
@@ -45,7 +50,7 @@
             <div class="card-footer">
                 <small class="text-muted">
                     <a target=_blank href="https://www.linkedin.com/in/md-shafayat-islam-97000110b/"
-                        class="btn btn-warning stretched-link">Meet the developer</a>
+                        class="btn btn-info stretched-link">Meet the developer</a>
                 </small>
             </div>
         </div>
