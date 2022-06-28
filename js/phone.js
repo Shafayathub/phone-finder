@@ -66,7 +66,7 @@ const showData = (data) => {
   div.classList.add('col');
   if (data.releaseDate != '') {
     div.innerHTML = `
-            <div class="card h-100">
+            <div onclick="loadDetails('${data.slug}')" class="card h-100">
                 <img src="${data.image}" class="card-img-top mx-auto" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${data.brand}</h5>
@@ -83,7 +83,7 @@ const showData = (data) => {
     searchResult.appendChild(div);
   } else {
     div.innerHTML = `
-            <div class="card h-100">
+            <div onclick="loadDetails('${data.slug}')" class="card h-100">
                 <img src="${data.image}" class="card-img-top mx-auto" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${data.brand}</h5>
@@ -101,4 +101,63 @@ const showData = (data) => {
   }
 
   document.getElementById('spinner').style.display = 'none';
+};
+const loadDetails = (data) => {
+  fetch(`https://openapi.programming-hero.com/api/phone/${data}`)
+    .then((res) => res.json())
+    .then((data) => showDeatils(data.data));
+};
+const showDeatils = (data) => {
+  console.log(data);
+  const preSearchResult = document.getElementById('pre-search-result');
+  preSearchResult.textContent = '';
+  const div = document.createElement('div');
+  div.classList.add('col');
+  if (data.releaseDate != '') {
+    div.innerHTML = `
+            <div class="card">
+                <img src="${data.image}" class="mx-auto" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${data.brand}</h5>
+                    <h5 class="card-title">${data.name}</h5>
+                    <p class="card-text">${data.releaseDate}</p>
+                    <p class="card-text">storage:${data.mainFeatures.storage}</p>
+                    <p class="card-text">memory:${data.mainFeatures.memory}</p>
+                    <p class="card-text">chipSet:${data.mainFeatures.chipSet}</p>
+                    <p class="card-text">displaySize:${data.mainFeatures.displaySize}</p>
+                    <p class="card-text">sensors:${data.mainFeatures.sensors}</p>
+                </div>
+                <div class="card-footer">
+                   <small class="text-muted">
+                      <button class="btn btn-info text-white">Details</button>
+                   </small>
+                </div>
+            </div>
+      `;
+    preSearchResult.appendChild(div);
+  } else {
+    div.innerHTML = `
+            <div class="card h-100">
+                <img src="${data.image}" class="mx-auto" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${data.brand}</h5>
+                    <h5 class="card-title">${data.name}</h5>
+                    <p class="card-text">${'not found'}</p>
+                  <p class="card-text">storage:${data.mainFeatures.storage}</p>
+                  <p class="card-text">memory:${data.mainFeatures.memory}</p>
+                  <p class="card-text">chipSet:${data.mainFeatures.chipSet}</p>
+                  <p class="card-text">displaySize:${
+                    data.mainFeatures.displaySize
+                  }</p>
+                  <p class="card-text">sensors:${data.mainFeatures.sensors}</p>
+                </div>
+                <div class="card-footer">
+                   <small class="text-muted">
+                      <button class="btn btn-info text-white">Details</button>
+                   </small>
+                </div>
+            </div>
+      `;
+    preSearchResult.appendChild(div);
+  }
 };
