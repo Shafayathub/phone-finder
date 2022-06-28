@@ -43,7 +43,7 @@ const showData = (data) => {
                 </div>
                 <div class="card-footer">
                    <small class="text-muted">
-                      <a target=_blank href="#" class="btn btn-info stretched-link">Details</a>
+                      <button class="btn btn-info text-white">Details</button>
                    </small>
                 </div>
             </div>
@@ -60,7 +60,7 @@ const showData = (data) => {
                 </div>
                 <div class="card-footer">
                    <small class="text-muted">
-                      <a target=_blank href="#" class="btn btn-info stretched-link">Details</a>
+                      <button class="btn btn-info text-white">Details</button>
                    </small>
                 </div>
             </div>
